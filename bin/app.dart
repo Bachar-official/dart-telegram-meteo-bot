@@ -13,6 +13,8 @@ void main(List<String> arguments) async {
   CommandHandler comHandler = CommandHandler(dbHandler: dbHandler);
   String token = await fileHandler.getBotToken();
   print('Bot token got successfully.');
+  print('Waiting 1 minute for network connection...');
+  await Future.delayed(Duration(minutes: 1));
   final username = (await Telegram(token).getMe()).username;
   var teledart = TeleDart(token, Event(username!));
   print('Bot initialized.');
